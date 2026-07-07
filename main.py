@@ -21,13 +21,30 @@ new_df.columns = new_df.columns.str.strip()
 
 new_df['Date'] = pd.to_datetime(new_df['Date'])
 
+
+#line chart
 monthly = new_df.groupby('Date')['Estimated Unemployment Rate (%)'].mean()
 
 plt.figure(figsize=(10,5))
-plt.plot(monthly.index, monthly.values)
+plt.plot(monthly.index, monthly.values, marker='o')
 plt.title("Average Unemployment Rate Over Time")
 plt.xlabel("Date")
 plt.ylabel("Unemployment Rate (%)")
 plt.xticks(rotation=45)
 plt.grid(color= 'gray', linestyle=':')
+plt.show()
+
+
+# bar chart
+
+region = new_df.groupby('Region')['Estimated Unemployment Rate (%)'].mean()
+
+print(region)
+
+plt.figure(figsize=(10,8))
+plt.barh(region.index, region.values, color='purple')
+plt.title("Average Unemployment by Region")
+plt.xlabel("Average Unemployment")
+plt.ylabel("Region")
+plt.grid( linestyle=':')
 plt.show()
