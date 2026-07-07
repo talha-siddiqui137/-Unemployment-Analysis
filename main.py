@@ -16,9 +16,18 @@ print(new_df.describe())
 
 print(new_df['Region'].value_counts())
 
+#Removes extra spaces from column names.
 new_df.columns = new_df.columns.str.strip()
 
 new_df['Date'] = pd.to_datetime(new_df['Date'])
 
-print(new_df.info())
-print(new_df.head())
+monthly = new_df.groupby('Date')['Estimated Unemployment Rate (%)'].mean()
+
+plt.figure(figsize=(10,5))
+plt.plot(monthly.index, monthly.values)
+plt.title("Average Unemployment Rate Over Time")
+plt.xlabel("Date")
+plt.ylabel("Unemployment Rate (%)")
+plt.xticks(rotation=45)
+plt.grid(color= 'gray', linestyle=':')
+plt.show()
