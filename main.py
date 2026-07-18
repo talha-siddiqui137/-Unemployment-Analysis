@@ -66,7 +66,7 @@ plt.hist(new_df['Estimated Unemployment Rate (%)'], bins=15, color= 'orange', ed
 plt.title("Distribution of Unemployment Rate")
 plt.xlabel("Unemployment Rate (%)")
 plt.ylabel("Frequency")
-plt.grid(linestyle=':', axis='x')
+plt.grid(linestyle=':', axis='y')
 
 plt.show()
 
